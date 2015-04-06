@@ -28,21 +28,6 @@ public class VBOHandler {
             return handle
         }
 
-        public fun createNew3D(values: Array<FloatArray>): Int {
-            val totalSize = values.map { v -> v.size() }.sum()
-            val handle = glGenBuffers()
-            val buffer = BufferUtils.createFloatBuffer(totalSize)
-            values.forEach { v -> buffer.put(v) }
-            buffer.flip()
-
-            glBindBuffer(GL_ARRAY_BUFFER, handle)
-            glBufferData(GL_ARRAY_BUFFER, buffer, GL_STATIC_DRAW)
-            glBindBuffer(GL_ARRAY_BUFFER, 0)
-
-            vbos.put(handle, buffer)
-            return handle
-        }
-
         public fun render(verticesHandle: Int, glType: Int, size: Int) {
             glEnableClientState(GL_VERTEX_ARRAY)
 

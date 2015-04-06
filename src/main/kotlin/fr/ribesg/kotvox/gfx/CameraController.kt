@@ -11,10 +11,6 @@ import org.lwjgl.opengl.GL11.glTranslatef
  * @author Ribesg
  */
 
-val speed = Config.SPEED
-val fastSpeed = speed * 5
-val mouseSensitivity = Config.MOUSE_SENSITIVITY
-
 public class CameraController(
         var posX: Float,
         var posY: Float,
@@ -22,6 +18,11 @@ public class CameraController(
         var yaw: Float,
         var pitch: Float
                              ) {
+
+    private val speed = Config.SPEED
+    private val fastSpeed = this.speed * 5
+    private val mouseSensitivity = Config.MOUSE_SENSITIVITY
+
     public fun update(delta: Int) {
         if (Mouse.isGrabbed()) {
             // Update horizontal view angle

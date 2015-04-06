@@ -36,7 +36,7 @@ public class Axes(length: Int, highlightedPoints: Int) : GraphicalEntity {
                 floatArray(0f, 0f, 0f),
                 floatArray(0f, 0f, length.toFloat())
                                 )
-        this.axesHandle = VBOHandler.createNew3D(axesVertices)
+        this.axesHandle = VBOHandler.createNew3D(axesVertices.toCollection(ArrayList<FloatArray>()))
         this.axesSize = axesVertices.size() * 3
 
         // Create Color VBO
@@ -48,7 +48,7 @@ public class Axes(length: Int, highlightedPoints: Int) : GraphicalEntity {
                 floatArray(0f, 0f, 1f),
                 floatArray(0f, 0f, 1f)
                               )
-        this.axesColorHandle = VBOHandler.createNew3D(axesColors)
+        this.axesColorHandle = VBOHandler.createNew3D(axesColors.toCollection(ArrayList<FloatArray>()))
 
         // Generate points on the axis
         val axesPoints = ArrayList<FloatArray>(length)

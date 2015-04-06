@@ -1,6 +1,7 @@
 package fr.ribesg.kotvox
 
 import fr.ribesg.kotvox.entity.Axes
+import fr.ribesg.kotvox.entity.Cube
 import fr.ribesg.kotvox.entity.GraphicalEntity
 import fr.ribesg.kotvox.gfx.CameraController
 import org.lwjgl.input.Keyboard
@@ -57,6 +58,9 @@ private class Main {
 
         // Create axes
         gfxEntities.add(Axes(256, 16))
+
+        // Add things
+        gfxEntities.add(Cube(1, 1, 1, 8))
 
         // Hide Mouse pointer
         Mouse.setGrabbed(true)
