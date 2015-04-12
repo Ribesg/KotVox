@@ -25,7 +25,7 @@ public class KotVox {
 
     init {
         this.timer = Timer()
-        this.camera = CameraController(-16f, -16f, -16f, -45f, 45f)
+        this.camera = CameraController(-16f, -16f, -16f, 45f, 135f)
         this.gfxEntities = LinkedList()
 
         this.init()

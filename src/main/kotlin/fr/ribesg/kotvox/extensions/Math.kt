@@ -17,6 +17,6 @@ public object Math {
     public fun sin(a: Float): Float = StrictMath.sin(a.toDouble()).toFloat()
     public fun tan(a: Float): Float = StrictMath.tan(a.toDouble()).toFloat()
 
-    public fun <T : Comparable<T>> between(min: T, value: T, max: T): T
-            = if (value < min) min else if (value > max) max else value
+    public fun <T : Number> between(min: T, value: T, max: T): T where T : Comparable<T>
+            = if (value < min ) min else if (value > max ) max else value
 }

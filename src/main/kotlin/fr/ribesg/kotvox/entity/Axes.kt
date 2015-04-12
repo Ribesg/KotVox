@@ -27,13 +27,14 @@ public class Axes(length: Int, highlightedPoints: Int) : Entity {
         this.lineWidth = 2f
 
         // Create axes vertices matching provided length and create associated VBO
+        val lf = length.toFloat()
         val axesVertices = array(
                 floatArray(0f, 0f, 0f),
-                floatArray(length.toFloat(), 0f, 0f),
+                floatArray(lf, 0f, 0f),
                 floatArray(0f, 0f, 0f),
-                floatArray(0f, length.toFloat(), 0f),
+                floatArray(0f, lf, 0f),
                 floatArray(0f, 0f, 0f),
-                floatArray(0f, 0f, length.toFloat())
+                floatArray(0f, 0f, lf)
         )
         this.axesHandle = VBOHandler.createNew3D(axesVertices.toCollection(ArrayList<FloatArray>()))
         this.axesSize = axesVertices.size() * 3
@@ -52,11 +53,11 @@ public class Axes(length: Int, highlightedPoints: Int) : Entity {
         // Generate points on the axis
         val axesPoints = ArrayList<FloatArray>(length)
         val axesColorsPoints = ArrayList<FloatArray>(length)
-        for (i in 1..length) {
-            axesPoints.add(floatArray(i.toFloat(), 0f, 0f))
-            axesPoints.add(floatArray(0f, i.toFloat(), 0f))
-            axesPoints.add(floatArray(0f, 0f, i.toFloat()))
-            if (i % highlightedPoints == 0) {
+        for (df in 1f..length.toFloat()) {
+            axesPoints.add(floatArray(df, 0f, 0f))
+            axesPoints.add(floatArray(0f, df, 0f))
+            axesPoints.add(floatArray(0f, 0f, df))
+            if (df.toInt() % highlightedPoints == 0) {
                 // Special color for points every "highlightedPoints" point
                 axesColorsPoints.add(floatArray(1f, .25f, .75f))
                 axesColorsPoints.add(floatArray(1f, .25f, .75f))
