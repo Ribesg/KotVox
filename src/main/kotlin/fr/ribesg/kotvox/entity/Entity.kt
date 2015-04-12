@@ -4,7 +4,7 @@ package fr.ribesg.kotvox.entity
  * @author Ribesg
  */
 
-trait GraphicalEntity {
+trait Entity {
 
     /**
      * Updates this entity based on time delta.

@@ -6,33 +6,39 @@ import org.lwjgl.input.Keyboard
  * @author Ribesg
  */
 
-public class Config {
-    public companion object {
-        // Screen configuration
-        val SCREEN_WIDTH: Int = 1440
-        val SCREEN_HEIGHT: Int = 900
-        val SCREEN_RATIO: Float = SCREEN_WIDTH / SCREEN_HEIGHT.toFloat()
-        val MAX_FPS: Int = 120
-        val HORIZONTAL_FOV: Float = 75.toFloat()
-        val VERTICAL_FOV: Float = 115.toFloat()
-        val VIEW_DISTANCE: Float = 5000.toFloat()
-
-        // Camera configuration
-        val SPEED: Float = .01f
-        val MOUSE_SENSITIVITY: Float = .05f
-
-        // Keys configuration
-        val KEY_SPRINT: Int = Keyboard.KEY_LSHIFT
-        val KEY_FORWARD: Int = Keyboard.KEY_Z
-        val KEY_BACK: Int = Keyboard.KEY_S
-        val KEY_LEFT: Int = Keyboard.KEY_Q
-        val KEY_RIGHT: Int = Keyboard.KEY_D
-        val KEY_UP: Int = Keyboard.KEY_SPACE
-        val KEY_DOWN: Int = Keyboard.KEY_LCONTROL
-
-        // Map configuration
-        val OCTREE_DEPTH: Int = 60
-        val OCTREE_RADIUS: Long = Long.MAX_VALUE
-        val CHUNK_SIZE: Int = (OCTREE_RADIUS / (2L shl (OCTREE_DEPTH - 2)) + 1).toInt()
-    }
+public object Screen {
+    public val WIDTH: Int = 1440
+    public val HEIGHT: Int = 900
+    public val MAX_FPS: Int = 120
 }
+
+public object Perspective {
+    public val RATIO: Float = Screen.WIDTH / Screen.HEIGHT.toFloat()
+    public val FOVY: Float = 70f
+    public val NEAR: Float = .0675f
+    public val FAR: Float = 4096f
+}
+
+public object Camera {
+    public val SPEED: Float = .01f
+    public val MOUSE_SENSITIVITY: Float = .05f
+    public val VERT_ANGLE: Float = 89f
+}
+
+public object Keys {
+    public val SPRINT: Int = Keyboard.KEY_LSHIFT
+    public val FORWARD: Int = Keyboard.KEY_Z
+    public val BACK: Int = Keyboard.KEY_S
+    public val LEFT: Int = Keyboard.KEY_Q
+    public val RIGHT: Int = Keyboard.KEY_D
+    public val UP: Int = Keyboard.KEY_SPACE
+    public val DOWN: Int = Keyboard.KEY_LCONTROL
+}
+
+/*
+public object World {
+    public val OCTREE_DEPTH: Int = 60
+    public val OCTREE_RADIUS: Long = Long.MAX_VALUE
+    public val CHUNK_SIZE: Int = (OCTREE_RADIUS / (2L shl (OCTREE_DEPTH - 2)) + 1).toInt()
+}
+*/

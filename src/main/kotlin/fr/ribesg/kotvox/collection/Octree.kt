@@ -1,4 +1,4 @@
-package fr.ribesg.kotvox
+package fr.ribesg.kotvox.collection
 
 /**
  * @author Ribesg
@@ -92,47 +92,47 @@ public class Octree<T>(val maxDepth: Int, val radius: Long) {
             val centerZ: Double
             val diff = this.tree.radius / Math.pow(2.0, (this.depth + 1).toDouble())
             when (i) {
-                Octree.TOP_NORTH_WEST    -> {
+                TOP_NORTH_WEST    -> {
                     centerX = this.centerX - diff
                     centerY = this.centerY + diff
                     centerZ = this.centerZ + diff
                 }
-                Octree.TOP_NORTH_EAST    -> {
+                TOP_NORTH_EAST    -> {
                     centerX = this.centerX + diff
                     centerY = this.centerY + diff
                     centerZ = this.centerZ + diff
                 }
-                Octree.TOP_SOUTH_WEST    -> {
+                TOP_SOUTH_WEST    -> {
                     centerX = this.centerX - diff
                     centerY = this.centerY - diff
                     centerZ = this.centerZ + diff
                 }
-                Octree.TOP_SOUTH_EAST    -> {
+                TOP_SOUTH_EAST    -> {
                     centerX = this.centerX + diff
                     centerY = this.centerY - diff
                     centerZ = this.centerZ + diff
                 }
-                Octree.BOTTOM_NORTH_WEST -> {
+                BOTTOM_NORTH_WEST -> {
                     centerX = this.centerX - diff
                     centerY = this.centerY + diff
                     centerZ = this.centerZ - diff
                 }
-                Octree.BOTTOM_NORTH_EAST -> {
+                BOTTOM_NORTH_EAST -> {
                     centerX = this.centerX + diff
                     centerY = this.centerY + diff
                     centerZ = this.centerZ - diff
                 }
-                Octree.BOTTOM_SOUTH_WEST -> {
+                BOTTOM_SOUTH_WEST -> {
                     centerX = this.centerX - diff
                     centerY = this.centerY - diff
                     centerZ = this.centerZ - diff
                 }
-                Octree.BOTTOM_SOUTH_EAST -> {
+                BOTTOM_SOUTH_EAST -> {
                     centerX = this.centerX + diff
                     centerY = this.centerY - diff
                     centerZ = this.centerZ - diff
                 }
-                else                     -> throw IllegalArgumentException("Invalid child identifier: " + i)
+                else              -> throw IllegalArgumentException("Invalid child identifier: " + i)
             }
 
             if (this.depth == this.tree.maxDepth - 1) {
@@ -153,29 +153,29 @@ public class Octree<T>(val maxDepth: Int, val radius: Long) {
             if (x < this.centerX) {
                 if (y < this.centerY) {
                     if (z < this.centerZ) {
-                        return Octree.BOTTOM_SOUTH_WEST
+                        return BOTTOM_SOUTH_WEST
                     } else {
-                        return Octree.TOP_SOUTH_WEST
+                        return TOP_SOUTH_WEST
                     }
                 } else {
                     if (z < this.centerZ) {
-                        return Octree.BOTTOM_NORTH_WEST
+                        return BOTTOM_NORTH_WEST
                     } else {
-                        return Octree.TOP_NORTH_WEST
+                        return TOP_NORTH_WEST
                     }
                 }
             } else {
                 if (y < this.centerY) {
                     if (z < this.centerZ) {
-                        return Octree.BOTTOM_SOUTH_EAST
+                        return BOTTOM_SOUTH_EAST
                     } else {
-                        return Octree.TOP_SOUTH_EAST
+                        return TOP_SOUTH_EAST
                     }
                 } else {
                     if (z < this.centerZ) {
-                        return Octree.BOTTOM_NORTH_EAST
+                        return BOTTOM_NORTH_EAST
                     } else {
-                        return Octree.TOP_NORTH_EAST
+                        return TOP_NORTH_EAST
                     }
                 }
             }

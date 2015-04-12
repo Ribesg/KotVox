@@ -1,7 +1,6 @@
 package fr.ribesg.kotvox.entity
 
 import fr.ribesg.kotvox.gfx.VBOHandler
-import fr.ribesg.kotvox.rand
 import org.lwjgl.opengl.GL11.*
 import java.util.ArrayList
 
@@ -9,7 +8,7 @@ import java.util.ArrayList
  * @author Ribesg
  */
 
-public class Axes(length: Int, highlightedPoints: Int) : GraphicalEntity {
+public class Axes(length: Int, highlightedPoints: Int) : Entity {
 
     val pointSize: Float
     val lineWidth: Float
@@ -35,7 +34,7 @@ public class Axes(length: Int, highlightedPoints: Int) : GraphicalEntity {
                 floatArray(0f, length.toFloat(), 0f),
                 floatArray(0f, 0f, 0f),
                 floatArray(0f, 0f, length.toFloat())
-                                )
+        )
         this.axesHandle = VBOHandler.createNew3D(axesVertices.toCollection(ArrayList<FloatArray>()))
         this.axesSize = axesVertices.size() * 3
 
@@ -47,7 +46,7 @@ public class Axes(length: Int, highlightedPoints: Int) : GraphicalEntity {
                 floatArray(0f, 1f, 0f),
                 floatArray(0f, 0f, 1f),
                 floatArray(0f, 0f, 1f)
-                              )
+        )
         this.axesColorHandle = VBOHandler.createNew3D(axesColors.toCollection(ArrayList<FloatArray>()))
 
         // Generate points on the axis
@@ -58,7 +57,7 @@ public class Axes(length: Int, highlightedPoints: Int) : GraphicalEntity {
             axesPoints.add(floatArray(0f, i.toFloat(), 0f))
             axesPoints.add(floatArray(0f, 0f, i.toFloat()))
             if (i % highlightedPoints == 0) {
-                // Special color for points every "higlightedPoints" point
+                // Special color for points every "highlightedPoints" point
                 axesColorsPoints.add(floatArray(1f, .25f, .75f))
                 axesColorsPoints.add(floatArray(1f, .25f, .75f))
                 axesColorsPoints.add(floatArray(1f, .25f, .75f))
